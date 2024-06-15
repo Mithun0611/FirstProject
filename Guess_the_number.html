@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Guess the Number Game</title>
+</head>
+<body>
+    <h1>GUESS THE NUMBER FROM 1 TO 10</h1>
+    <input type="number" placeholder="Enter the number" id="one">
+    <button onclick="check()">Check</button>
+    <p id="two">You are wrong | right</p>
+    <p id="three">Score: 10</p>
+
+    <script>
+        var enterno = document.getElementById("one");
+        var randomno = Math.floor(Math.random() * 10) + 1;
+        var result = document.getElementById("two");
+        var score = document.getElementById("three");
+        var totalscore = 10;
+
+        function resetGame() {
+            totalscore = 10;
+            randomno = Math.floor(Math.random() * 10) + 1;
+            score.textContent = "Score: " + totalscore;
+            result.textContent = "You are wrong | right";
+            enterno.value = '';
+        }
+
+        function check() {
+            if (totalscore > 0) {
+                var enteredno = parseInt(enterno.value);
+                if (randomno === enteredno) {
+                    console.log("You are right");
+                    result.textContent = "You are right";
+                    alert("YOU WON.........");
+                    resetGame();
+                } else {
+                    totalscore -= 1;
+                    result.textContent = "You are wrong";
+                    score.textContent = "Score: " + totalscore;
+                    console.log("You are wrong");
+                }
+            }
+
+            if (totalscore === 0) {
+                alert("Game Over. Your score is 0.");
+                result.textContent = "Game Over.";
+                resetGame();
+            }
+        }
+    </script>
+
+    <style>
+        body{
+            background-color: black;
+            color: red;
+            text-align: center;
+        }
+
+        #two{
+            color: green;
+        }
+
+    #three{
+        color:blue;
+    }
+
+    input{
+        margin-top: 250px;
+    }
+    </style>
+    <h2>Developed by Mithun</h2>
+</body>
+</html>
